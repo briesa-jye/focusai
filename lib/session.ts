@@ -55,3 +55,9 @@ export async function requireSession() {
   if (!s) redirect("/portal/login");
   return s;
 }
+
+export async function requireStaff() {
+  const s = await requireSession();
+  if (s.user.role !== "staff") redirect("/portal");
+  return s;
+}

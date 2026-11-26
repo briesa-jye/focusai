@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import { requireSession } from "@/lib/session";
 import { milestones, usageStats, invoices } from "@/lib/portal-data";
 import { listRequests } from "@/lib/store";
@@ -8,6 +9,7 @@ const dot = { done: "bg-emerald-500", active: "bg-amber-400", upcoming: "bg-blac
 
 export default async function Dashboard() {
   const { user, org } = await requireSession();
+  if (user.role === "staff") redirect("/portal/admin");
   const open = (await listRequests(org.id)).filter((r) => r.status !== "Done").length;
   const due = invoices.filter((i) => i.orgId === org.id && i.status !== "Paid").length;
   return (

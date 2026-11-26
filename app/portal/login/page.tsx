@@ -17,6 +17,7 @@ export default async function LoginPage() {
         <div className="mt-8 rounded-md bg-soft p-4 text-xs text-black/70">
           <p className="font-medium">Demo accounts (sample data)</p>
           <p className="mt-1">demo@northpoint.example, member@northpoint.example or demo@harbour.example</p>
+          <p>Staff view: team@focusai.example</p>
           <p>Password: demo1234</p>
         </div>
       </div>

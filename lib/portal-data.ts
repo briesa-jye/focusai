@@ -1,5 +1,5 @@
 // SAMPLE DATA ONLY. Replace with a real database (and hashed passwords) before going live.
-export type Role = "admin" | "member";
+export type Role = "admin" | "member" | "staff";
 
 export type PortalUser = { email: string; password: string; name: string; role: Role; orgId: string };
 export type Org = { id: string; name: string; sector: string; lead: string };
@@ -10,11 +10,13 @@ export type Opportunity = { id: string; orgId: string; title: string; value: num
 export type Invoice = { id: string; orgId: string; date: string; amount: number; status: "Paid" | "Due" | "Overdue" };
 
 export const orgs: Org[] = [
+  { id: "focusai", name: "Focus AI", sector: "Internal", lead: "Focus AI team" },
   { id: "northpoint", name: "Northpoint Capital", sector: "Funds management", lead: "Alex Morgan" },
   { id: "harbour", name: "Harbour & Co Advisory", sector: "Advisory", lead: "Jordan Hayes" },
 ];
 
 export const users: PortalUser[] = [
+  { email: "team@focusai.example", password: "demo1234", name: "Focus AI Team", role: "staff", orgId: "focusai" },
   { email: "demo@northpoint.example", password: "demo1234", name: "Priya Shah", role: "admin", orgId: "northpoint" },
   { email: "member@northpoint.example", password: "demo1234", name: "Tom Reilly", role: "member", orgId: "northpoint" },
   { email: "demo@harbour.example", password: "demo1234", name: "Mia Lawson", role: "admin", orgId: "harbour" },

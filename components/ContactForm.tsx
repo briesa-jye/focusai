@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useActionState } from "react";
+import { submitContact } from "@/app/actions-contact";
 
 const subjects = ["Working with us", "Partnerships", "Media", "Careers", "Something else"];
 const industries = ["Property investment and funds management", "Real estate and property services", "Property development", "Financial services", "Legal, accounting and advisory", "Consulting and professional services", "Other"];
@@ -15,17 +16,20 @@ function Select({ name, label, options, required }: { name: string; label: strin
 }
 
 export default function ContactForm() {
-  const [sent, setSent] = useState(false);
-  if (sent) return <p className="py-16 text-2xl">Thank you. We&apos;ll be in touch shortly.</p>;
+  const [state, action, pending] = useActionState(submitContact, undefined);
+  const booking = process.env.NEXT_PUBLIC_BOOKING_URL;
+  if (state?.ok) return (
+    <div className="py-16">
+      <p className="text-2xl">Thank you. We&apos;ll be in touch within one business day.</p>
+      {booking && <a href={booking} className="mt-6 inline-block underline">Book a call now</a>}
+    </div>
+  );
   return (
     <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        // TODO: wire to an email provider (e.g. Resend) when a mailbox is chosen.
-        setSent(true);
-      }}
+      action={action}
       className="grid gap-x-10 gap-y-2 md:grid-cols-2"
     >
+      <input className="hidden" name="website" tabIndex={-1} autoComplete="off" aria-hidden />
       <input className="field" name="first" placeholder="First name *" required />
       <input className="field" name="last" placeholder="Last name *" required />
       <input className="field" name="title" placeholder="Job title" />
@@ -38,8 +42,9 @@ export default function ContactForm() {
       <p className="mt-4 text-sm text-muted md:col-span-2">
         By sending this you agree to our <a className="underline" href="/legal/privacy">Privacy policy</a> and <a className="underline" href="/legal/terms">Terms</a>.
       </p>
-      <button type="submit" className="mt-6 inline-flex w-fit items-center rounded-md bg-[#121f2c] px-5 py-3 text-sm font-medium text-white">
-        Send
+      {state?.error && <p role="alert" className="text-sm text-red-600 md:col-span-2">{state.error}</p>}
+      <button type="submit" disabled={pending} className="mt-6 inline-flex w-fit items-center rounded-md bg-[#121f2c] px-5 py-3 text-sm font-medium text-white">
+        {pending ? "Sending..." : "Send"}
       </button>
     </form>
   );
