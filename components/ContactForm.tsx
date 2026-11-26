@@ -1,19 +1,11 @@
 "use client";
 import { useActionState } from "react";
+import Dropdown from "./Dropdown";
 import { submitContact } from "@/app/actions-contact";
 
 const subjects = ["Working with us", "Partnerships", "Media", "Careers", "Something else"];
 const industries = ["Property investment and funds management", "Real estate and property services", "Property development", "Financial services", "Legal, accounting and advisory", "Consulting and professional services", "Other"];
 const sources = ["Search engine", "AI assistant", "LinkedIn", "Referral", "Event", "Something else"];
-
-function Select({ name, label, options, required }: { name: string; label: string; options: string[]; required?: boolean }) {
-  return (
-    <select name={name} required={required} defaultValue="" className="field">
-      <option value="" disabled>{label}{required ? " *" : ""}</option>
-      {options.map((o) => <option key={o}>{o}</option>)}
-    </select>
-  );
-}
 
 export default function ContactForm() {
   const [state, action, pending] = useActionState(submitContact, undefined);
@@ -35,9 +27,9 @@ export default function ContactForm() {
       <input className="field" name="title" placeholder="Job title" />
       <input className="field" name="company" placeholder="Company *" required />
       <input className="field md:col-span-2" type="email" name="email" placeholder="Email *" required />
-      <Select name="subject" label="Subject" options={subjects} required />
-      <Select name="industry" label="Industry" options={industries} required />
-      <div className="md:col-span-2"><Select name="source" label="How did you hear about Focus AI?" options={sources} /></div>
+      <Dropdown name="subject" placeholder="Subject" options={subjects} required />
+      <Dropdown name="industry" placeholder="Industry" options={industries} required />
+      <div className="md:col-span-2"><Dropdown name="source" placeholder="How did you hear about Focus AI?" options={sources} /></div>
       <textarea className="field md:col-span-2" name="message" rows={4} placeholder="Message *" required />
       <p className="mt-4 text-sm text-muted md:col-span-2">
         By sending this you agree to our <a className="underline" href="/legal/privacy">Privacy policy</a> and <a className="underline" href="/legal/terms">Terms</a>.

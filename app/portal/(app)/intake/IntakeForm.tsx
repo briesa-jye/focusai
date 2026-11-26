@@ -1,5 +1,6 @@
 "use client";
 import { useActionState } from "react";
+import Dropdown from "@/components/Dropdown";
 import { submitIntake } from "../../actions";
 
 const tools = ["Microsoft 365", "Google Workspace", "Salesforce / CRM", "Xero / MYOB", "Document management", "Other"];
@@ -32,11 +33,7 @@ export default function IntakeForm({ hasReport }: { hasReport: boolean }) {
       <label className="mt-4 block text-sm font-medium">What would you like AI to help you achieve?
         <textarea name="goals" rows={2} className="field mt-1 font-normal" placeholder="e.g. faster reporting, fewer manual tasks" />
       </label>
-      <label className="mt-4 block text-sm font-medium">Team size
-        <select name="teamSize" className="field mt-1 font-normal" defaultValue="">
-          <option value="" disabled>Select</option><option>1-10</option><option>11-50</option><option>51-200</option><option>200+</option>
-        </select>
-      </label>
+      <div className="mt-4"><p className="text-sm font-medium">Team size</p><Dropdown name="teamSize" placeholder="Select" options={["1-10", "11-50", "51-200", "200+"]} /></div>
       <Group name="tools" label="Tools you use" options={tools} />
       <Group name="data" label="Information involved" options={data} />
       <Group name="concerns" label="Your main concerns" options={concerns} />
