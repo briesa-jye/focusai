@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ArrowButton, { ArrowIcon } from "@/components/ArrowButton";
+import HeroGradient from "@/components/HeroGradient";
 import ContactForm from "@/components/ContactForm";
 
 const services = [
@@ -30,8 +31,9 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section id="top" className="hero-bg relative flex min-h-[100svh] items-center">
-        <div className={`${wrap} w-full`}>
+      <section id="top" className="hero-bg relative flex min-h-[100svh] items-center overflow-hidden">
+        <HeroGradient />
+        <div className={`${wrap} relative w-full`}>
           <h1 className="max-w-3xl text-[clamp(2.4rem,4.6vw,4.25rem)]">Strategic Artificial Intelligence Consultancy.</h1>
           <p className="mt-6 max-w-[470px] text-lg leading-[1.4] tracking-[-0.02em]">
             Focus AI partners with professional services firms to unlock the value of their expertise and institutional knowledge through technology.
@@ -41,7 +43,7 @@ export default function Home() {
             <ArrowButton href="/#contact" variant="slate">Speak to our team</ArrowButton>
           </div>
         </div>
-        <div className="absolute inset-x-0 bottom-10 flex flex-col items-center gap-2 text-[13px]">
+        <div className="absolute inset-x-0 bottom-10 z-10 flex flex-col items-center gap-2 text-[13px]">
           <span className="w-12 text-center leading-tight">Scroll down</span>
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M7 1v12M2 8l5 5 5-5" /></svg>
         </div>
