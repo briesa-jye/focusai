@@ -8,6 +8,7 @@ const items = [
   ["/portal/requests", "Requests"],
   ["/portal/opportunities", "AI opportunities"],
   ["/portal/invoices", "Invoices"],
+  ["/portal/team", "Team"],
 ];
 
 export default function PortalNav() {

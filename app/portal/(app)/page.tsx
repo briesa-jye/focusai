@@ -1,5 +1,6 @@
 import { requireSession } from "@/lib/session";
-import { milestones, usageStats, requests, invoices } from "@/lib/portal-data";
+import { milestones, usageStats, invoices } from "@/lib/portal-data";
+import { listRequests } from "@/lib/store";
 
 export const metadata = { title: "Dashboard | Focus AI portal" };
 
@@ -7,7 +8,7 @@ const dot = { done: "bg-emerald-500", active: "bg-amber-400", upcoming: "bg-blac
 
 export default async function Dashboard() {
   const { user, org } = await requireSession();
-  const open = requests.filter((r) => r.orgId === org.id && r.status !== "Done").length;
+  const open = (await listRequests(org.id)).filter((r) => r.status !== "Done").length;
   const due = invoices.filter((i) => i.orgId === org.id && i.status !== "Paid").length;
   return (
     <div className="max-w-5xl">

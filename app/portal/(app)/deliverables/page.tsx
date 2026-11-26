@@ -17,7 +17,7 @@ export default async function Page() {
               <p className="font-medium">{d.title}</p>
               <p className="text-xs text-black/50">{d.type} · {d.date} · {d.size}</p>
             </div>
-            <button className="rounded-md border border-black/15 px-3 py-2 text-xs" title="Sample data: no file attached">Download</button>
+            <a href={`/portal/download/${d.id}`} download className="rounded-md border border-black/15 px-3 py-2 text-xs hover:bg-black/5">Download</a>
           </li>
         ))}
       </ul>
