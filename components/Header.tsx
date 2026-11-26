@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Logo from "./Logo";
 import { ArrowIcon } from "./ArrowButton";
 
@@ -13,8 +13,15 @@ const links = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const f = () => setScrolled(window.scrollY > 24);
+    f();
+    window.addEventListener("scroll", f, { passive: true });
+    return () => window.removeEventListener("scroll", f);
+  }, []);
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-white/55">
+    <header className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${scrolled || open ? "bg-white/80" : "bg-transparent"}`}>
       <div className="mx-auto grid h-[72px] max-w-[1440px] grid-cols-[1fr_auto_1fr] items-center px-5 md:px-6">
         <Link href="/#top" aria-label="Focus AI home"><Logo /></Link>
         <nav className="hidden items-center gap-8 md:flex">
