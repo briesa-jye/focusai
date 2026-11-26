@@ -21,7 +21,7 @@ export default function Footer() {
         </div>
         <div>
           <h4 className="mb-4 text-xs uppercase tracking-widest text-black/40">Sectors</h4>
-          <ul className="space-y-2 text-sm"><li>Real Estate</li><li>Finance</li><li>Advisory</li></ul>
+          <ul className="space-y-2 text-sm">{["Real estate","Property management","Finance and mortgage broking","Insurance broking","Accounting and bookkeeping","Legal practices","Advisory firms","Recruitment"].map((x) => <li key={x}>{x}</li>)}</ul>
         </div>
         <div>
           <h4 className="mb-4 text-xs uppercase tracking-widest text-black/40">Connect</h4>

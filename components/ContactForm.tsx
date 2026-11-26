@@ -4,7 +4,7 @@ import Dropdown from "./Dropdown";
 import { submitContact } from "@/app/actions-contact";
 
 const subjects = ["Working with us", "Partnerships", "Media", "Careers", "Something else"];
-const industries = ["Property investment and funds management", "Real estate and property services", "Property development", "Financial services", "Legal, accounting and advisory", "Consulting and professional services", "Other"];
+const industries = ["Real estate and property management", "Property investment and funds management", "Finance and mortgage broking", "Insurance broking", "Accounting and bookkeeping", "Legal practices", "Advisory firms", "Recruitment", "Other professional services", "Other"];
 const sources = ["Search engine", "AI assistant", "LinkedIn", "Referral", "Event", "Something else"];
 
 export default function ContactForm() {
