@@ -1,23 +1,8 @@
 import Link from "next/link";
 import ArrowButton, { ArrowIcon } from "@/components/ArrowButton";
 import HeroGradient from "@/components/HeroGradient";
+import { services as svc, work as workItems } from "@/lib/content";
 import ContactForm from "@/components/ContactForm";
-
-const services = [
-  ["01", "AI Strategy", "Find where AI creates real value in your firm and build a roadmap you can act on."],
-  ["02", "AI Design", "Shape tools and workflows around the people who use them, so adoption sticks."],
-  ["03", "AI Infrastructure", "Secure, scalable foundations for your data, models and integrations."],
-  ["04", "AI Development", "Custom assistants and automations built and shipped by our engineers."],
-  ["05", "AI Change", "Bring your teams along with training, governance and clear ways of working."],
-  ["06", "AI Workforce", "Redesign roles and capability so people and AI do their best work together."],
-];
-
-const work = [
-  { title: "Northpoint Capital", text: "How a funds manager cut research time with a private knowledge assistant.", tag: "Case study" },
-  { title: "Harbour & Co Advisory", text: "A firm-wide AI programme, from first pilot to everyday practice.", tag: "Case study" },
-  { title: "Putting AI tools to work", text: "Why the hard part of adoption begins after the licences are bought.", tag: "Article", ext: true },
-  { title: "Inside the decision", text: "What leaders weigh when committing to an AI transformation.", tag: "Article", ext: true },
-];
 
 const pillars = [
   ["Identify the right AI opportunities", "We map your workflows and rank opportunities by value, risk and effort."],
@@ -39,8 +24,8 @@ export default function Home() {
             Focus AI partners with professional services firms to unlock the value of their expertise and institutional knowledge through technology.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <ArrowButton href="/#work">Explore our work</ArrowButton>
-            <ArrowButton href="/#contact" variant="slate">Speak to our team</ArrowButton>
+            <ArrowButton href="/work">Explore our work</ArrowButton>
+            <ArrowButton href="/contact" variant="slate">Speak to our team</ArrowButton>
           </div>
         </div>
         <div className="absolute inset-x-0 bottom-10 z-10 flex flex-col items-center gap-2 text-[13px]">
@@ -97,20 +82,20 @@ export default function Home() {
           <h2 className="text-4xl">Our Services</h2>
           <p className="mt-4 max-w-[470px] text-lg tracking-[-0.02em] text-black/70">We work with leaders to identify the commercial opportunities AI can unlock, then help build them.</p>
           <div className="mt-24 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {services.map(([n, t, d]) => (
-              <div key={n} className="glass flex min-h-[260px] flex-col justify-between rounded-lg p-6">
+            {svc.map(({ slug, n, title: t, summary: d }) => (
+              <Link key={n} href={`/services#${slug}`} className="glass flex min-h-[260px] flex-col justify-between rounded-lg p-6 transition-colors hover:bg-white/90">
                 <span className="text-xs text-black/60">{n}</span>
                 <div>
                   <h3 className="text-xl">{t}</h3>
                   <p className="mt-2 text-sm leading-snug text-black/70">{d}</p>
                 </div>
-              </div>
+              </Link>
             ))}
             <div className="flex min-h-[260px] flex-col justify-between rounded-lg bg-[#2f4a55] p-6 text-white lg:col-start-3">
               <h3 className="text-xl">Not sure where to start?</h3>
               <div>
                 <p className="mb-4 text-sm text-white/80">Get in touch and we&apos;ll point you to the right place.</p>
-                <ArrowButton href="/#contact">Speak to our team</ArrowButton>
+                <ArrowButton href="/contact">Speak to our team</ArrowButton>
               </div>
             </div>
           </div>
@@ -125,16 +110,16 @@ export default function Home() {
           <p className="mt-4 max-w-[470px] text-lg tracking-[-0.02em] text-black/70">Ideas and real-world work on turning human expertise, knowledge and AI into advantage.</p>
         </div>
         <div className="mt-10 space-y-16">
-          {work.map((w) => (
-            <article key={w.title}>
+          {workItems.map((w) => (
+            <article key={w.slug}>
               <div className="frame aspect-[16/7] w-full !rounded-none" />
               <div className={`${wrap} mt-6 flex flex-wrap items-start justify-between gap-6`}>
                 <div className="max-w-xl">
                   <p className="text-xs uppercase tracking-widest text-black/50">{w.tag}</p>
                   <h3 className="mt-2 text-2xl">{w.title}</h3>
-                  <p className="mt-2 text-black/70">{w.text}</p>
+                  <p className="mt-2 text-black/70">{w.summary}</p>
                 </div>
-                {w.ext ? <ArrowButton href="#" diagonal external variant="outline">Open article</ArrowButton> : <ArrowButton href="/#contact" variant="outline">Speak to our team</ArrowButton>}
+                <ArrowButton href={`/work/${w.slug}`} variant="outline">{w.tag === "Article" ? "Read article" : "Read case study"}</ArrowButton>
               </div>
             </article>
           ))}
@@ -164,7 +149,7 @@ export default function Home() {
         <div className={wrap}>
           <h2 className="max-w-4xl text-[clamp(1.75rem,3.2vw,2.75rem)]">AI that builds on what makes your firm competitive.</h2>
           <p className="mt-6 max-w-[470px] text-lg tracking-[-0.02em] text-black/70">We partner with leaders across property, funds management and professional services to extend what already sets them apart.</p>
-          <div className="mt-8"><ArrowButton href="/#contact" variant="outline">Speak to our team</ArrowButton></div>
+          <div className="mt-8"><ArrowButton href="/contact" variant="outline">Speak to our team</ArrowButton></div>
         </div>
       </section>
 

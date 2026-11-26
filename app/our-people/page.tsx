@@ -20,7 +20,7 @@ export default function People() {
           </div>
         ))}
       </div>
-      <Link href="/#contact" className="mt-16 inline-block font-medium underline underline-offset-4">Speak to our team</Link>
+      <Link href="/contact" className="mt-16 inline-block font-medium underline underline-offset-4">Speak to our team</Link>
     </section>
   );
 }

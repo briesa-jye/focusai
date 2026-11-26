@@ -12,10 +12,10 @@ export default function Footer() {
         <div>
           <h4 className="mb-4 text-xs uppercase tracking-widest text-black/40">Explore</h4>
           <ul className="space-y-2 text-sm">
-            <li><Link href="/#services">Our Services</Link></li>
-            <li><Link href="/#work">Our Work</Link></li>
+            <li><Link href="/services">Our Services</Link></li>
+            <li><Link href="/work">Our Work</Link></li>
             <li><Link href="/our-people">Our People</Link></li>
-            <li><Link href="/#contact">Contact Us</Link></li>
+            <li><Link href="/contact">Contact Us</Link></li>
             <li><Link href="/portal/login">Client login</Link></li>
           </ul>
         </div>

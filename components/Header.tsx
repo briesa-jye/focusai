@@ -5,10 +5,10 @@ import Logo from "./Logo";
 import { ArrowIcon } from "./ArrowButton";
 
 const links = [
-  { href: "/#services", label: "Our Services" },
-  { href: "/#work", label: "Our Work" },
+  { href: "/services", label: "Our Services" },
+  { href: "/work", label: "Our Work" },
   { href: "/our-people", label: "Our People" },
-  { href: "/#contact", label: "Contact Us" },
+  { href: "/contact", label: "Contact Us" },
 ];
 
 export default function Header() {
@@ -31,7 +31,7 @@ export default function Header() {
         </nav>
         <div className="flex justify-end">
           <Link href="/portal/login" className="mr-4 hidden self-center text-[13px] hover:opacity-60 md:inline-block">Client login</Link>
-          <Link href="/#contact" className="hidden items-center gap-3 rounded-md bg-white px-4 py-3 text-[13px] font-medium text-[#121f2c] md:inline-flex">
+          <Link href="/contact" className="hidden items-center gap-3 rounded-md bg-white px-4 py-3 text-[13px] font-medium text-[#121f2c] md:inline-flex">
             Get in touch <ArrowIcon />
           </Link>
           <button className="text-[13px] font-medium md:hidden" onClick={() => setOpen(!open)} aria-expanded={open}>{open ? "Close" : "Menu"}</button>
