@@ -1,0 +1,10 @@
+export const metadata = { title: "Privacy Policy | Focus AI" };
+
+export default function Page() {
+  return (
+    <section className="mx-auto max-w-3xl px-6 py-28">
+      <h1 className="text-5xl font-medium tracking-tight">Privacy Policy</h1>
+      <p className="mt-8 text-black/70">This is a placeholder. Replace with your reviewed legal text before launch.</p>
+    </section>
+  );
+}
