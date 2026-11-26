@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import { ArrowIcon } from "./ArrowButton";
 
 const subjects = ["Working with us", "Partnerships", "Media", "Careers", "Something else"];
 const industries = ["Property investment and funds management", "Real estate and property services", "Property development", "Financial services", "Legal, accounting and advisory", "Consulting and professional services", "Other"];
@@ -39,8 +38,8 @@ export default function ContactForm() {
       <p className="mt-4 text-sm text-muted md:col-span-2">
         By sending this you agree to our <a className="underline" href="/legal/privacy">Privacy policy</a> and <a className="underline" href="/legal/terms">Terms</a>.
       </p>
-      <button type="submit" className="mt-6 inline-flex w-fit items-center gap-3 rounded-full bg-black py-2 pl-6 pr-2 text-white">
-        Send <ArrowIcon invert />
+      <button type="submit" className="mt-6 inline-flex w-fit items-center rounded-md bg-[#121f2c] px-5 py-3 text-sm font-medium text-white">
+        Send
       </button>
     </form>
   );

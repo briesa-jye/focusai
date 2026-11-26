@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ArrowButton from "@/components/ArrowButton";
+import ArrowButton, { ArrowIcon } from "@/components/ArrowButton";
 import ContactForm from "@/components/ContactForm";
 
 const services = [
@@ -12,115 +12,144 @@ const services = [
 ];
 
 const work = [
-  { title: "Northpoint Capital", text: "How a funds manager cut research time by two thirds with a private knowledge assistant.", tag: "Case study" },
+  { title: "Northpoint Capital", text: "How a funds manager cut research time with a private knowledge assistant.", tag: "Case study" },
   { title: "Harbour & Co Advisory", text: "A firm-wide AI programme, from first pilot to everyday practice.", tag: "Case study" },
-  { title: "Putting AI tools to work", text: "Why the hard part of AI adoption begins after the licences are bought.", tag: "Article", ext: true },
+  { title: "Putting AI tools to work", text: "Why the hard part of adoption begins after the licences are bought.", tag: "Article", ext: true },
   { title: "Inside the decision", text: "What leaders weigh when committing to an AI transformation.", tag: "Article", ext: true },
 ];
 
 const pillars = [
-  ["Identify the right AI opportunities", "We map your workflows and rank opportunities by value, risk and effort, so you invest in what matters first."],
-  ["Build AI capability", "We upskill your people and set the guardrails, so your firm can run with AI long after we leave."],
-  ["Tailored AI solutions", "Off-the-shelf rarely fits. We design and build solutions around your data, clients and standards."],
+  ["Identify the right AI opportunities", "We map your workflows and rank opportunities by value, risk and effort."],
+  ["Build AI capability", "We upskill your people and set the guardrails so your firm can run with AI."],
+  ["Tailored AI solutions", "We design and build solutions around your data, clients and standards."],
 ];
+
+const wrap = "mx-auto max-w-[1440px] px-5 md:px-6";
 
 export default function Home() {
   return (
     <>
-      <section id="top" className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-7xl flex-col justify-between px-6 pb-10 pt-24">
-        <div>
-          <h1 className="max-w-5xl text-[clamp(2.75rem,8vw,7rem)] font-medium leading-[0.98] tracking-tight">
-            Strategic Artificial Intelligence Consultancy.
-          </h1>
-          <p className="mt-10 max-w-2xl text-xl text-black/70">
-            We help professional services firms turn hard-won expertise and institutional knowledge into lasting advantage through technology.
+      {/* Hero */}
+      <section id="top" className="hero-bg relative flex min-h-[100svh] items-center">
+        <div className={`${wrap} w-full`}>
+          <h1 className="max-w-3xl text-[clamp(2.4rem,4.6vw,4.25rem)]">Strategic Artificial Intelligence Consultancy.</h1>
+          <p className="mt-6 max-w-[470px] text-lg leading-[1.4] tracking-[-0.02em]">
+            Focus AI partners with professional services firms to unlock the value of their expertise and institutional knowledge through technology.
           </p>
-          <div className="mt-10 flex flex-wrap items-center gap-10">
+          <div className="mt-8 flex flex-wrap gap-3">
             <ArrowButton href="/#work">Explore our work</ArrowButton>
-            <Link href="/#contact" className="text-[15px] font-medium underline-offset-4 hover:underline">Speak to our team</Link>
+            <ArrowButton href="/#contact" variant="slate">Speak to our team</ArrowButton>
           </div>
         </div>
-        <div className="mt-24 flex items-end justify-between border-t border-line pt-6 text-sm text-muted">
-          <span>Scroll down</span>
-          <span className="max-w-md text-right">What becomes possible when human expertise leads and AI amplifies it?</span>
+        <div className="absolute inset-x-0 bottom-10 flex flex-col items-center gap-2 text-[13px]">
+          <span className="w-12 text-center leading-tight">Scroll down</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.2"><path d="M7 1v12M2 8l5 5 5-5" /></svg>
         </div>
       </section>
 
-      <section id="people" className="bg-soft py-28">
-        <div className="mx-auto max-w-7xl px-6">
-          <h2 className="text-4xl font-medium tracking-tight md:text-6xl">Our People</h2>
-          <p className="mt-6 max-w-2xl text-lg text-black/70">A multidisciplinary team spanning business leadership, commercial strategy, human-centred design and AI engineering.</p>
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
+      {/* Statement */}
+      <section className="py-24">
+        <div className={wrap}>
+          <h2 className="max-w-5xl text-[clamp(1.75rem,3vw,2.5rem)]">
+            Rethink what&apos;s possible in the AI era, and the role of human expertise in shaping better decisions.
+          </h2>
+        </div>
+      </section>
+
+      {/* People */}
+      <section id="about" className="bg-white py-10">
+        <div className={wrap}>
+          <h2 className="text-4xl">Our People</h2>
+          <p className="mt-4 max-w-[470px] text-lg tracking-[-0.02em] text-black/70">A multidisciplinary team combining business leadership, commercial strategy, human-centred design and AI.</p>
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
             {[["Alex Morgan", "Director"], ["Jordan Hayes", "Director"]].map(([n, r]) => (
-              <div key={n} className="rounded-2xl bg-white p-4">
-                <div className="aspect-[4/5] rounded-xl bg-gradient-to-br from-neutral-200 to-neutral-400" />
-                <p className="mt-5 text-xl font-medium">{n}</p>
-                <p className="text-muted">{r}</p>
+              <div key={n} className="rounded-lg bg-soft p-6">
+                <div className="frame aspect-[4/3]" />
+                <p className="mt-16 text-xl tracking-[-0.02em]">{n}</p>
+                <p className="mt-1 text-xs text-black/60">{r}</p>
               </div>
             ))}
-            <Link href="/our-people" className="flex aspect-[4/5] flex-col justify-end rounded-2xl bg-black p-8 text-white md:aspect-auto">
-              <span className="text-3xl font-medium leading-tight">Meet the full team</span>
-              <span className="mt-6">→</span>
+            <Link href="/our-people" className="flex min-h-[320px] flex-col justify-between rounded-lg border border-black/10 p-6">
+              <div>
+                <p className="text-xl tracking-[-0.02em]">Meet the full team</p>
+                <p className="mt-2 text-xs text-black/60">See everyone behind Focus AI.</p>
+              </div>
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-black text-white">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><path d="M4.5 2.5L8 6l-3.5 3.5" /></svg>
+              </span>
             </Link>
           </div>
+          <div className="relative mx-auto mt-24 max-w-3xl">
+            <div className="frame aspect-[4/3]" />
+            <span className="absolute left-1/2 top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow">
+              <svg width="12" height="14" viewBox="0 0 12 14"><path d="M1 1l10 6-10 6z" fill="#121f2c" /></svg>
+            </span>
+          </div>
         </div>
       </section>
 
-      <section id="services" className="py-28">
-        <div className="mx-auto max-w-7xl px-6">
-          <h2 className="text-4xl font-medium tracking-tight md:text-6xl">Our Services</h2>
-          <p className="mt-6 max-w-2xl text-lg text-black/70">End-to-end support, from the first conversation about AI to a capability your firm owns.</p>
-          <div className="mt-14 grid border-l border-t border-line md:grid-cols-2 lg:grid-cols-3">
+      {/* Services */}
+      <section id="services" className="relative py-10">
+        <div className="hero-bg absolute inset-x-0 bottom-0 top-[180px]" />
+        <div className={`${wrap} relative`}>
+          <h2 className="text-4xl">Our Services</h2>
+          <p className="mt-4 max-w-[470px] text-lg tracking-[-0.02em] text-black/70">We work with leaders to identify the commercial opportunities AI can unlock, then help build them.</p>
+          <div className="mt-24 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {services.map(([n, t, d]) => (
-              <div key={n} className="group border-b border-r border-line p-8 transition-colors hover:bg-black hover:text-white">
-                <span className="text-sm text-muted group-hover:text-white/60">{n}</span>
-                <h3 className="mt-10 text-2xl font-medium">{t}</h3>
-                <p className="mt-3 text-black/60 group-hover:text-white/70">{d}</p>
+              <div key={n} className="glass flex min-h-[260px] flex-col justify-between rounded-lg p-6">
+                <span className="text-xs text-black/60">{n}</span>
+                <div>
+                  <h3 className="text-xl">{t}</h3>
+                  <p className="mt-2 text-sm leading-snug text-black/70">{d}</p>
+                </div>
               </div>
             ))}
-          </div>
-          <div className="mt-16 flex flex-wrap items-center justify-between gap-6">
-            <div>
-              <h3 className="text-2xl font-medium">Not sure where to start?</h3>
-              <p className="mt-2 text-black/60">Talk to us. We&apos;ll help you find the first step.</p>
+            <div className="flex min-h-[260px] flex-col justify-between rounded-lg bg-[#2f4a55] p-6 text-white lg:col-start-3">
+              <h3 className="text-xl">Not sure where to start?</h3>
+              <div>
+                <p className="mb-4 text-sm text-white/80">Get in touch and we&apos;ll point you to the right place.</p>
+                <ArrowButton href="/#contact">Speak to our team</ArrowButton>
+              </div>
             </div>
-            <ArrowButton href="/#contact">Speak to our team</ArrowButton>
           </div>
+          <div className="h-24" />
         </div>
       </section>
 
-      <section id="work" className="bg-soft py-28">
-        <div className="mx-auto max-w-7xl px-6">
-          <h2 className="text-4xl font-medium tracking-tight md:text-6xl">Our Work</h2>
-          <p className="mt-6 max-w-2xl text-lg text-black/70">Selected engagements and thinking from our team.</p>
-          <div className="mt-14 grid gap-6 md:grid-cols-2">
-            {work.map((w) => (
-              <article key={w.title} className="rounded-2xl bg-white p-4">
-                <div className="aspect-[16/10] rounded-xl bg-gradient-to-br from-neutral-100 to-neutral-300" />
-                <div className="p-4">
-                  <p className="text-xs uppercase tracking-widest text-muted">{w.tag}</p>
-                  <h3 className="mt-2 text-2xl font-medium">{w.title}</h3>
-                  <p className="mt-2 text-black/60">{w.text}</p>
-                  <div className="mt-6">
-                    {w.ext ? <ArrowButton href="#" diagonal external>Open article</ArrowButton> : <ArrowButton href="/#contact">Speak to our team</ArrowButton>}
-                  </div>
+      {/* Work */}
+      <section id="work" className="bg-white py-10">
+        <div className={wrap}>
+          <h2 className="text-4xl">Our Work</h2>
+          <p className="mt-4 max-w-[470px] text-lg tracking-[-0.02em] text-black/70">Ideas and real-world work on turning human expertise, knowledge and AI into advantage.</p>
+        </div>
+        <div className="mt-10 space-y-16">
+          {work.map((w) => (
+            <article key={w.title}>
+              <div className="frame aspect-[16/7] w-full !rounded-none" />
+              <div className={`${wrap} mt-6 flex flex-wrap items-start justify-between gap-6`}>
+                <div className="max-w-xl">
+                  <p className="text-xs uppercase tracking-widest text-black/50">{w.tag}</p>
+                  <h3 className="mt-2 text-2xl">{w.title}</h3>
+                  <p className="mt-2 text-black/70">{w.text}</p>
                 </div>
-              </article>
-            ))}
-          </div>
+                {w.ext ? <ArrowButton href="#" diagonal external variant="outline">Open article</ArrowButton> : <ArrowButton href="/#contact" variant="outline">Speak to our team</ArrowButton>}
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
-      <section className="py-28">
-        <div className="mx-auto max-w-7xl px-6">
-          <h2 className="max-w-3xl text-4xl font-medium tracking-tight md:text-6xl">AI strategy starts with your business.</h2>
-          <div className="mt-16 space-y-20">
+      {/* Strategy */}
+      <section className="bg-white py-10">
+        <div className={wrap}>
+          <h2 className="max-w-3xl text-[clamp(1.75rem,3.2vw,2.75rem)]">AI strategy starts with your business.</h2>
+          <div className="mt-16 space-y-16">
             {pillars.map(([t, d], i) => (
               <div key={t} className={`grid items-center gap-10 md:grid-cols-2 ${i % 2 ? "md:[&>div:first-child]:order-2" : ""}`}>
-                <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-neutral-200 to-neutral-400" />
+                <div className="frame aspect-[4/3]" />
                 <div>
-                  <h3 className="text-3xl font-medium">{t}</h3>
-                  <p className="mt-4 max-w-md text-lg text-black/60">{d}</p>
+                  <h3 className="text-2xl">{t}</h3>
+                  <p className="mt-3 max-w-md text-black/70">{d}</p>
                 </div>
               </div>
             ))}
@@ -128,20 +157,20 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-black py-28 text-white">
-        <div className="mx-auto max-w-7xl px-6">
-          <h2 className="max-w-4xl text-4xl font-medium tracking-tight md:text-6xl">AI that builds on what makes your firm competitive.</h2>
-          <p className="mt-8 max-w-2xl text-lg text-white/70">In property, funds management and professional services, your edge is expertise and relationships. We design AI that protects and extends both.</p>
-          <Link href="/#contact" className="mt-10 inline-flex items-center gap-3 font-medium">Speak to our team <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white text-black">›</span></Link>
+      {/* Competitive */}
+      <section className="bg-white py-24">
+        <div className={wrap}>
+          <h2 className="max-w-4xl text-[clamp(1.75rem,3.2vw,2.75rem)]">AI that builds on what makes your firm competitive.</h2>
+          <p className="mt-6 max-w-[470px] text-lg tracking-[-0.02em] text-black/70">We partner with leaders across property, funds management and professional services to extend what already sets them apart.</p>
+          <div className="mt-8"><ArrowButton href="/#contact" variant="outline">Speak to our team</ArrowButton></div>
         </div>
       </section>
 
-      <section id="contact" className="py-28">
-        <div className="mx-auto max-w-7xl px-6">
-          <h2 className="text-[clamp(2.5rem,7vw,6.5rem)] font-medium uppercase leading-none tracking-tight">Refocus what&apos;s possible. Then go further.</h2>
-          <p className="mt-8 max-w-xl text-lg text-black/60">Tell us about your firm and what you want AI to do for it.</p>
-          <div className="mt-14 max-w-4xl"><ContactForm /></div>
-        </div>
+      {/* Contact */}
+      <section id="contact" className="px-5 pb-16 pt-44">
+        <h2 className="mx-auto max-w-[1440px] text-center text-[clamp(2.5rem,8vw,7.5rem)] font-medium uppercase leading-[0.95] tracking-[-0.04em]">Refocus what&apos;s possible. Then go further.</h2>
+        <p className="mx-auto mt-8 max-w-md text-center text-lg text-black/60">Your firm&apos;s greatest asset is the expertise inside it. Tell us how you want to use it.</p>
+        <div className="mx-auto mt-16 max-w-3xl"><ContactForm /></div>
       </section>
     </>
   );
