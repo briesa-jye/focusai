@@ -64,7 +64,7 @@ export default function Home() {
           <h2 className="text-4xl">Our People</h2>
           <p className="mt-4 max-w-[470px] text-lg tracking-[-0.02em] text-black/70">A multidisciplinary team combining business leadership, commercial strategy, human-centred design and AI.</p>
           <div className="mt-10 grid gap-4 md:grid-cols-3">
-            {[["Alex Morgan", "Director"], ["Jordan Hayes", "Director"]].map(([n, r]) => (
+            {[["Jye Sanjurjo", "Director"], ["Levi Mieli", "Director"]].map(([n, r]) => (
               <div key={n} className="rounded-lg bg-soft p-6">
                 <div className="frame aspect-[4/3]" />
                 <p className="mt-16 text-xl tracking-[-0.02em]">{n}</p>

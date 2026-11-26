@@ -11,8 +11,8 @@ export type Invoice = { id: string; orgId: string; date: string; amount: number;
 
 export const orgs: Org[] = [
   { id: "focusai", name: "Focus AI", sector: "Internal", lead: "Focus AI team" },
-  { id: "northpoint", name: "Northpoint Capital", sector: "Funds management", lead: "Alex Morgan" },
-  { id: "harbour", name: "Harbour & Co Advisory", sector: "Advisory", lead: "Jordan Hayes" },
+  { id: "northpoint", name: "Northpoint Capital", sector: "Funds management", lead: "Jye Sanjurjo" },
+  { id: "harbour", name: "Harbour & Co Advisory", sector: "Advisory", lead: "Levi Mieli" },
 ];
 
 export const users: PortalUser[] = [
